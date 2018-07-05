@@ -3,7 +3,7 @@ module View.Table exposing (view)
 import Html
 import Model exposing (Model, Msg(..), DataType, dataTypeEnum, defaultDataType)
 import Model.Table as Table
-import Model.Enum as Enum
+import Enum
 
 
 view : Table.Table DataType String -> Html.Html Msg
@@ -27,10 +27,7 @@ view table =
                     (\index dataType ->
                         Enum.enumSelect
                             dataTypeEnum
-                            (Enum.findEnumValue dataTypeEnum
-                                >> Maybe.withDefault Model.defaultDataType
-                                >> (SetDataType index)
-                            )
+                            (SetDataType index)
                             dataType
                             |> List.singleton
                             |> Html.td []
@@ -54,10 +51,7 @@ view table =
                     (\index dataType ->
                         Enum.enumSelect
                             dataTypeEnum
-                            (Enum.findEnumValue dataTypeEnum
-                                >> Maybe.withDefault Model.defaultDataType
-                                >> (SetDataType index)
-                            )
+                            (SetDataType index)
                             dataType
                             |> List.singleton
                             |> Html.td []
