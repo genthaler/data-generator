@@ -6,7 +6,7 @@ We need to keep the width of the table and the length of the columnTypes list co
 -}
 
 import Model.Table exposing (..)
-import Model.Enum exposing (..)
+import Enum exposing (..)
 
 
 type alias Model =
@@ -34,7 +34,7 @@ type DataType
 
 dataTypeEnum : Enum DataType
 dataTypeEnum =
-    { values =
+    Enum.makeEnum
         [ Text
         , Date
         , Email
@@ -43,8 +43,7 @@ dataTypeEnum =
         , State
         , Gender
         ]
-    , toString = Basics.toString
-    }
+        Basics.toString
 
 
 defaultDataType : DataType
